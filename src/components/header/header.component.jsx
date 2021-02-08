@@ -2,7 +2,7 @@ import React from "react";
 import "./header.styles.scss";
 
 // REDUX IMPORTS //
-import { connect, useSelector } from "react-redux";
+import { connect } from "react-redux";
 
 // COMPONENT IMPORTS //
 import { ReactComponent as Logo } from "../../assets/crown.svg";
@@ -11,8 +11,8 @@ import { Link } from "react-router-dom";
 // firebase
 import { auth } from "../../firebase/firebase.utils";
 
-const Header = () => {
-  const currentUser = useSelector((state) => state.user.currentUser);
+const Header = (props) => {
+  // const currentUser = useSelector((state) => state.user.currentUser);
 
   return (
     <div className="header">
@@ -26,7 +26,7 @@ const Header = () => {
         <Link className="option" to="/contact">
           CONTACT
         </Link>
-        {currentUser ? (
+        {props.currentUser ? (
           <div className="option" onClick={() => auth.signOut()}>
             SIGN OUT
           </div>
